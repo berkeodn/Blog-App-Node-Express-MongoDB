@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Blog</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        body {
+            background:#c0afaf;
+            color: #333;
+            padding-top: 50px;
+        }
+
+        .navbar {
+            background-color: #f8f9fa;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+        }
+
+        .jumbotron {
+            background-color: #e7e7e7;
+            padding: 4rem;
+            border-radius: 10px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-radius: 0;
+        }
+
+        .btn-primary {
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/homepage" onclick="window.location.href='/homepage';">Homepage</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Write Blog</a>
+            </li>
+        </ul>
+
+        <form class="form-inline ml-auto" method="GET" action="/searchContents">
+            <input class="form-control mr-sm-2" type="query" name="tag" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="jumbotron">
+            <p class="lead">Share your thoughts and ideas with us.</p>
+
+            <form action="/createContents" method="POST">
+
+                <div class="form-group">
+                    <label for="content">Write your opinions</label>
+                    <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Blog</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            padding-top: 50px;
+        }
+        .jumbotron {
+            text-align: center;
+            border-radius: 10px;
+        }
+        .btn-primary {
+            margin-top: 20px;
+        }
+        body{
+    margin-top:20px;
+    background:#c0afaf;
+}
+
+.timeline {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative
+}
+
+.timeline:before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    width: 5px;
+    background: #2d353c;
+    left: 20%;
+    margin-left: -2.5px
+}
+
+.timeline>li {
+    position: relative;
+    min-height: 50px;
+    padding: 20px 0
+}
+
+.timeline .timeline-time {
+    position: absolute;
+    left: 0;
+    width: 18%;
+    text-align: right;
+    top: 35px
+}
+
+.timeline .timeline-time .date,
+.timeline .timeline-time .time {
+    display: block;
+    font-weight: 600
+}
+
+.timeline .timeline-time .date {
+    line-height: 30px;
+    font-size: 14px
+}
+
+.timeline .timeline-icon {
+    left: 15%;
+    position: absolute;
+    width: 10%;
+    text-align: center;
+    top: 40px
+}
+
+.timeline .timeline-icon a {
+    text-decoration: none;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 20px;
+    background: #d9e0e7;
+    line-height: 10px;
+    color: #fff;
+    font-size: 14px;
+    border: 5px solid #2d353c;
+    transition: border-color .2s linear
+}
+
+.timeline .timeline-body {
+    margin-left: 23%;
+    margin-right: 17%;
+    background: #fff;
+    position: relative;
+    padding: 20px 25px;
+    border-radius: 6px
+}
+
+.timeline .timeline-body:before {
+    content: '';
+    display: block;
+    position: absolute;
+    border: 10px solid transparent;
+    border-right-color: #fff;
+    left: -20px;
+    top: 20px
+}
+
+.timeline .timeline-body>div+div {
+    margin-top: 15px
+}
+
+.timeline .timeline-body>div+div:last-child {
+    margin-bottom: -20px;
+    padding-bottom: 20px;
+    border-radius: 0 0 6px 6px
+}
+
+.timeline-header .userimage {
+    float: left;
+    width: 38px;
+    height: 38px;
+    border-radius: 35px;
+    overflow: hidden;
+    margin: -2px 10px -2px 0
+}
+
+.timeline img {
+    max-width: 100%;
+    display: block
+}
+
+.timeline-content {
+    letter-spacing: .50px;
+    line-height: 0px;
+    font-size: 14px
+    
+}
+
+.timeline-content:after,
+.timeline-content:before {
+    content: '';
+    display: inside;
+    clear: both
+}
+
+.timeline-footer {
+    background: #fff;
+    border-top: 1px solid #e2e7ec;
+    padding-top: 15px
+}
+
+.timeline-footer a:not(.btn) {
+    color: #575d63
+}
+
+.timeline-footer a:not(.btn):focus,
+.timeline-footer a:not(.btn):hover {
+    color: #2d353c
+}
+
+.lead {
+    margin-bottom: 20px;
+    font-size: 21px;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+.text-danger, .text-red {
+    color: #ff5b57!important;
+}
+
+.clicks-box {
+    background-color: #fff;
+    border-radius: 6px;
+    padding: 5px 30px 5px;
+    box-shadow: 15px 15px 6px rgba(0, 0, 0, 0.1);
+}
+
+.clicks-box h2 {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.clicks-box ol {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 5px;
+}
+
+.clicks-box li {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 0;
+}
+
+.clicks-box li span {
+    font-size: 14px;
+    color: #575d63;
+    
+}
+
+.clicks-box li strong {
+    font-size: 14px;
+    color: #2d353c;
+    margin-left: 5px;
+}
+
+.container {
+  margin-top: 20px;
+  background: #c0afaf;
+}
+
+/* Add Flexbox to the row to position clicks-box on the right side */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-md-4 {
+  margin-left: 80%; /* Move the clicks-box to the right */
+  margin-top: -30%; /* Move the clicks-box to the top */
+  padding-left: 150px;
+}
+    </style>
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Homepage</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/write" onclick="window.location.href='/write';">Write Blog</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" method="GET" action="/searchedContents">
+                <input class="form-control mr-sm-2" type="query" name="tag" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">Welcome to Böden's Blog</h1>
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <a class="btn btn-primary btn-lg" href="/write" onclick="window.location.href='/write';" role="button">Get Started</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h1 class="text-center my-4">Timeline</h1>
+                <div id="dataContainer"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+       <ul class="timeline" id="timeline">
+        <script>
+            // Function to fetch data from the endpoint and generate the timeline
+            async function fetchTimelineData() {
+                try {
+                    const response = await fetch('/getPosts'); // Replace with your actual API endpoint URL
+                    const data = await response.json();
+
+                    const timelineContainer = document.getElementById('timeline');
+    
+                    data.posts.forEach(entry => {
+                        const content = entry.content;
+                        const date = entry.date;
+                        const [dateString, timeString] = date.split("T");
+
+                        // Extract date components
+                        const [year, month, day] = dateString.split("-");
+
+                        // Extract time components
+                        const [time, milliseconds] = timeString.split(".");
+                        const [hours, minutes, seconds] = time.split(":");
+                        let updatedHours = parseInt(hours) + 3;
+                        updatedHours = updatedHours.toString();
+                        // Format date
+                        const formattedDate = `${day}/${month}/${year}`;
+
+                        // Format time
+                        const formattedTime = `${updatedHours}:${minutes}`;
+
+                        // Format date and time together
+                        const formattedDateTime = `${formattedDate} - ${formattedTime}`;   
+
+                         // Function to convert hashtags to clickable links with appropriate URL
+                        function convertHashtagsToLinks(content) {
+                        const hashtagRegex = /(?:^|)(?:#)([ığüşöçİĞÜŞÖÇ\w_-]+)/gi;
+                        return content.replace(hashtagRegex, '<a href="/searchedContents?tag=$1">#$1</a>');
+                        }
+                        const formattedContent = convertHashtagsToLinks(content);
+    
+                        const timelineEntry = document.createElement('li');
+                        timelineEntry.innerHTML = `
+                            <!-- Timeline Entry -->
+                            <div class="timeline-time">
+                                <span class="date">${formattedDateTime}</span>
+                            </div>
+                            <div class="timeline-icon">
+                                <a href="javascript:;">&nbsp;</a>
+                            </div>
+                            <div class="timeline-body">
+                                <div class="timeline-header">
+                                    <span class="userimage"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""></span>
+                                </div>
+                                <div class="timeline-content">
+                                    <p>${formattedContent}</p>
+                                </div>
+                            </div>
+                            <!-- End Timeline Entry -->
+                        `;
+    
+                        timelineContainer.appendChild(timelineEntry);
+                    });
+                } catch (error) {
+                    console.error('Error fetching timeline data:', error);
+                }
+            }
+
+            async function fetchClickList() {
+                try {
+                    const response = await fetch('/getHashtagClicks'); // Replace with your actual API endpoint URL
+                    const data = await response.json();
+
+                    const clickListBox = document.getElementById('clicks-list');
+    
+                    data.hashtagclicks.forEach(entry => {
+                        const hashtag = entry.hashtag;
+                        const clicks = entry.clicks;
+
+                        const clickList = document.createElement('li');
+                        clickList.innerHTML = `
+                            <span>${hashtag}</span>
+                            <strong>${clicks}</strong>
+                        `;
+    
+                        clickListBox.appendChild(clickList);
+                    });
+                } catch (error) {
+                    console.error('Error fetching timeline data:', error);
+                }
+            }
+
+            // Call the fetchTimelineData function when the page is loaded
+            window.onload = function () {
+                fetchTimelineData();
+                fetchClickList();
+            };
+        </script>
+       </ul>
+       <div class="col-md-4">
+       <div class="clicks-box">
+        <h2>Number of Clicks</h2>
+        <ol class="clicks-list" id="clicks-list">
+        </ol>
+    </div>
+</div>
+    </div>    
+</body>
+</html>

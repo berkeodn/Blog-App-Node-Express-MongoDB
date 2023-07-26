@@ -8,7 +8,6 @@ This is a full-stack blog application built using Node.js, Express.js, and Mongo
 - Homepage: View a list of blog posts in chronological order on the homepage.
 - Create and View Posts: Authenticated users can create new blog posts and view existing posts.
 - Clickable Hashtags: Posts can be tagged with hashtags, and users can click on a hashtag to see related posts.
-- Responsive Design: The application is designed to work well on both desktop and mobile devices.
 
 ## Tech Stack
 

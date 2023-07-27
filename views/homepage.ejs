@@ -172,7 +172,7 @@
 .clicks-box {
     background-color: #fff;
     border-radius: 6px;
-    padding: 5px 30px 5px;
+    padding: 10px 30px 3px;
     box-shadow: 15px 15px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -213,14 +213,17 @@
 
 /* Add Flexbox to the row to position clicks-box on the right side */
 .row {
-  display: flex;
+  display: absolute;
   flex-wrap: wrap;
+  position: relative;
 }
 
 .col-md-4 {
-  margin-left: 80%; /* Move the clicks-box to the right */
-  margin-top: -30%; /* Move the clicks-box to the top */
+  position: absolute;
+  top: 68%; /* Stick to the top */
+  right: 10%; /* Stick to the right */
   padding-left: 150px;
+  width: 23%;
 }
     </style>
     

@@ -101,7 +101,7 @@ const getHashtagClicks = async(req,res) => {
 
 const getPosts = async(req,res) => {
     try {
-        const posts = await HashtagsContents.find({}, {content: 1, date: 1})
+        const posts = await HashtagsContents.find({}, {content: 1, date: 1}).sort({ date: -1 })
         res.status(200).json({
             posts
         })

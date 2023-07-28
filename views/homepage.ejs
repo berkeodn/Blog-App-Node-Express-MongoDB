@@ -88,11 +88,13 @@
 
 .timeline .timeline-body {
     margin-left: 23%;
-    margin-right: 17%;
+    margin-right: 15%;
     background: #fff;
     position: relative;
-    padding: 20px 25px;
-    border-radius: 6px
+    padding: 20px 25px 3px;
+    border-radius: 6px;
+    /* New property to handle text wrapping */
+    word-wrap: break-word;
 }
 
 .timeline .timeline-body:before {
@@ -106,7 +108,7 @@
 }
 
 .timeline .timeline-body>div+div {
-    margin-top: 15px
+    margin-top: 5px
 }
 
 .timeline .timeline-body>div+div:last-child {
@@ -130,10 +132,9 @@
 }
 
 .timeline-content {
-    letter-spacing: .50px;
-    line-height: 0px;
-    font-size: 14px
-    
+    letter-spacing: normal;
+    line-height: 30px;
+    font-size: 14px;
 }
 
 .timeline-content:after,
@@ -141,21 +142,6 @@
     content: '';
     display: inside;
     clear: both
-}
-
-.timeline-footer {
-    background: #fff;
-    border-top: 1px solid #e2e7ec;
-    padding-top: 15px
-}
-
-.timeline-footer a:not(.btn) {
-    color: #575d63
-}
-
-.timeline-footer a:not(.btn):focus,
-.timeline-footer a:not(.btn):hover {
-    color: #2d353c
 }
 
 .lead {

@@ -20,6 +20,13 @@
 				<h3>Sign Up</h3>
 			</div>
 			<div class="card-body">
+				<div style="position: relative;">
+				<% if (message) { %>
+                    <div class="alert alert-dismissible fade show alert-danger" role="alert" style="position: absolute; top:-170px; left: 0; right: 0; z-index: 1; font-size: 16px;">
+                        <%= message %>
+                    </div>
+                <% } %>
+
 				<form method="POST" action="/register"> <!-- Route u belirtiyorsun-->
                     <!-- Post işleminde form bu şekilde gönderilir 
                         method belirlenir create ise post update ise put -->

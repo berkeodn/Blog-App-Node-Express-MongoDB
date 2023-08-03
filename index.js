@@ -6,6 +6,7 @@ const Auth = require('./routes/auth.js');
 const Post = require('./routes/post.js');
 const HashtagsContents = require('./models/hashtags-and-contents.js');
 const hashtagClicks = require('./models/hashtag-clicks.js');
+const {message} = require('./controllers/auth.js');
 
 dotenv.config();
 
@@ -21,10 +22,10 @@ app.use(express.urlencoded({limit: '30mb', extended: true}));
 app.use('/', Auth);
 app.use('/', Post);
 app.use('/login', function(req, res) {
-    res.render('login');
+    res.render('login', {message});
 });
 app.use('/register', function(req, res) {
-    res.render('register');
+    res.render('register',{message});
 });
 app.use('/write', function(req, res) {
     res.render('write');

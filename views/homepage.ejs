@@ -211,6 +211,32 @@
   padding-left: 150px;
   width: 23%;
 }
+
+/* Add styles for the delete button */
+.timeline .timeline-body .delete-box {
+    position: absolute;
+    top: 0px;
+    right: 5px;
+}
+
+.timeline .timeline-body .delete-button {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    line-height: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    font-size: 14px;
+    color: #999;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.timeline .timeline-body .delete-button:hover {
+    background-color: #f2f2f2;
+}
     </style>
     
 </head>
@@ -259,7 +285,7 @@
             // Function to fetch data from the endpoint and generate the timeline
             async function fetchTimelineData() {
                 try {
-                    const response = await fetch('/getPosts'); // Replace with your actual API endpoint URL
+                    const response = await fetch('/getPosts');
                     const data = await response.json();
 
                     const timelineContainer = document.getElementById('timeline');
@@ -267,6 +293,7 @@
                     data.posts.forEach(entry => {
                         const content = entry.content;
                         const date = entry.date;
+                        const id = entry._id;
                         const [dateString, timeString] = date.split("T");
 
                         // Extract date components
@@ -294,6 +321,7 @@
                         const formattedContent = convertHashtagsToLinks(content);
     
                         const timelineEntry = document.createElement('li');
+
                         timelineEntry.innerHTML = `
                             <!-- Timeline Entry -->
                             <div class="timeline-time">
@@ -308,6 +336,9 @@
                                 </div>
                                 <div class="timeline-content">
                                     <p>${formattedContent}</p>
+                                </div>
+                                <div class="delete-box">
+                                    <a href="#" onclick="deletePost('${id}')" class="delete-button">&times;</a>
                                 </div>
                             </div>
                             <!-- End Timeline Entry -->
@@ -343,8 +374,26 @@
                     console.error('Error fetching timeline data:', error);
                 }
             }
+            
+            async function deletePost(contentId) {
+                try {
+                    const response = await fetch(`/deletePost/${contentId}`, {
+                        method: 'DELETE'
+                    });
+                    // Handle the response here (e.g., refresh the timeline after deletion)
+                    if (response.ok) {
+                        const timelineContainer = document.getElementById('timeline');
+                        timelineContainer.innerHTML = ''; // Clear the existing timeline
+                        fetchTimelineData(); // Fetch and display the updated timeline
+                    } else {
+                        console.error('Failed to delete the post.');
+                    }
+                } catch (error) {
+                    console.error('Error deleting the post:', error);
+                }
+            }
 
-            // Call the fetchTimelineData function when the page is loaded
+            // Call the function when the page is loaded
             window.onload = function () {
                 fetchTimelineData();
                 fetchClickList();

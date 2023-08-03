@@ -9,13 +9,13 @@ const register = async(req,res) => {
         const user = await Auth.findOne({email})
 
         if(user){
-            return res.status(500).json({message: "This email address is already in use"})
-        }
+            return res.render('register', {message: 'This email is already in use'})
+        } else{
 
-        if(password.length < 8){
-            return res.status(500).json({message: "Password can't be shorter than 8 characters"})
+            if(password.length < 8){
+                return res.render('register', {message: 'Password must be at least 8 characters long'})
+            }
         }
-
         const passwordHash = await bcrypt.hash(password,12)
 
         const newUser = await Auth.create({username, email, password: passwordHash})
@@ -36,23 +36,25 @@ const register = async(req,res) => {
 const login = async(req,res) => {
 
     try {
-        const {email, password} = req.body;
-        const user = await Auth.findOne({email});
-        if(!user){
-            return res.status(500).json({message: "Wrong email or password"})
-        }
-        const comparePassword = await bcrypt.compare(password, user.password)
-        if(!comparePassword){
-            return res.status(500).json({message: "Wrong email or password"})
-        }
+        const { email, password } = req.body;
+        const user = await Auth.findOne({ email });
 
-    const token = jwt.sign({id: user.id}, process.env.SECRET_TOKEN, {expiresIn:'1h'})
+        if (!user) {
+            return res.render('login', {message: 'Invalid email or password'})
+        } else {
+            const comparePassword = await bcrypt.compare(password, user.password);
 
-    return res.redirect('/homepage')
-}
-    catch(error){
-        return res.status(500).json({message: error.message})
-}
-}
+            if (!comparePassword) {
+                return res.render('login', {message: 'Invalid email or password'})
+            }
+
+            const token = jwt.sign({ id: user.id }, process.env.SECRET_TOKEN, { expiresIn: '1h' });
+
+            return res.redirect('/homepage')
+        }
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
 
 module.exports = {register, login}

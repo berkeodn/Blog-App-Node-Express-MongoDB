@@ -288,6 +288,7 @@
                     const response = await fetch('/getPosts');
                     const data = await response.json();
 
+
                     const timelineContainer = document.getElementById('timeline');
     
                     data.posts.forEach(entry => {
@@ -377,9 +378,14 @@
             
             async function deletePost(contentId) {
                 try {
+                    const token = localStorage.getItem('token');
                     const response = await fetch(`/deletePost/${contentId}`, {
-                        method: 'DELETE'
-                    });
+                        method: 'DELETE',
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    })
+
                     // Handle the response here (e.g., refresh the timeline after deletion)
                     if (response.ok) {
                         const timelineContainer = document.getElementById('timeline');

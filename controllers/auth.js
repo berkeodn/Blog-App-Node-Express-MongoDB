@@ -20,7 +20,7 @@ const register = async(req,res) => {
 
         const newUser = await Auth.create({username, email, password: passwordHash})
 
-        const userToken = jwt.sign({id: newUser.id}, process.env.SECRET_TOKEN, {expiresIn:'1h'});
+        const userToken = jwt.sign({id: newUser._id}, process.env.SECRET_TOKEN, {expiresIn:'1h'});
 
         return res.redirect('/login')
 
@@ -48,9 +48,10 @@ const login = async(req,res) => {
                 return res.render('login', {message: 'Invalid email or password'})
             }
 
-            const token = jwt.sign({ id: user.id }, process.env.SECRET_TOKEN, { expiresIn: '1h' });
+            const token = jwt.sign({ id: user._id }, process.env.SECRET_TOKEN, { expiresIn: '1h' });
+            console.log(token);
 
-            return res.redirect('/homepage')
+            return res.render('homepage', { token });
         }
     } catch (error) {
         return res.status(500).json({ message: error.message });

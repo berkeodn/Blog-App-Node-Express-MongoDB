@@ -3,6 +3,7 @@ const Hashtags = require('../models/hashtags.js')
 const slugify = require('../helpers/slugify.js')
 const HashtagsContents = require('../models/hashtags-and-contents.js')
 const hashtagClicks = require('../models/hashtag-clicks.js')
+const hashtagsAndContents = require('../models/hashtags-and-contents.js')
 
 
 
@@ -122,18 +123,6 @@ const getDetail = async(req,res) => {
     }
 }
 
-const getUpdate = async(req,res) => {
-    try {
-        const {id} = req.params;
-        const updatePost = await HashtagsContents.findByIdAndUpdate(id, req.body, {new: true})
-        res.status(200).json({
-            updatePost
-        })
-    } catch (error) {
-        return res.status(500).json({message: error.message})
-    }
-}
-
 const deletePost = async(req,res) => {
     try {
         const {id} = req.params;
@@ -163,4 +152,4 @@ const searchPost = async(req,res) => {
     }
 }
 
-module.exports = {createPost, getPosts, getDetail, getUpdate, deletePost, searchPost, createHashtags, createContents, searchContents, getHashtagClicks}
+module.exports = {createPost, getPosts, getDetail, deletePost, searchPost, createHashtags, createContents, searchContents, getHashtagClicks}

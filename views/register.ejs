@@ -21,8 +21,14 @@
 			</div>
 			<div class="card-body">
 				<div style="position: relative;">
-				<% if (message) { %>
+				<% if (message && !success) { %>
                     <div class="alert alert-dismissible fade show alert-danger" role="alert" style="position: absolute; top:-170px; left: 0; right: 0; z-index: 1; font-size: 16px;">
+                        <%= message %>
+                    </div>
+                <% } %>
+
+				<% if (message && success) { %>
+                    <div class="alert alert-dismissible fade show alert-success" role="alert" style="position: absolute; top:-170px; left: 0; right: 0; z-index: 1; font-size: 16px;">
                         <%= message %>
                     </div>
                 <% } %>
@@ -57,9 +63,14 @@
 					</div>
 					<div class="form-group">
 						<button type="submit" class="btn float-right login_btn">Register</button>
-
+					</div>
+					<div class="card-footer" >
+						<div class="d-flex justify-content-center links">
+							<a href="/login" onclick="window.location.href='/homepage';"> Go to login page</a>
+						</div>
 					</div>
 				</form>
+				
 			</div>
 		</div>
 	</div>

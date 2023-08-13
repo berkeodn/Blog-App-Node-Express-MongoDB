@@ -27,6 +27,9 @@ app.use('/login', function(req, res) {
 app.use('/register', function(req, res) {
     res.render('register',{message});
 });
+app.use('/updatePassword', function(req, res) {
+    res.render('updatePassword',{message});
+});
 app.use('/write', function(req, res) {
     res.render('write');
 });

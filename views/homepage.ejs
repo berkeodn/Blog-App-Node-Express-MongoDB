@@ -352,6 +352,7 @@
                 }
             }
 
+            
             async function fetchClickList() {
                 try {
                     const response = await fetch('/getHashtagClicks'); // Replace with your actual API endpoint URL
@@ -376,13 +377,32 @@
                 }
             }
             
+            async function loginToken () {
+                try {
+                    const response = await fetch('/login', {
+                        method: 'POST',
+                        headers: {
+                            accept: 'application/json'
+                        },
+                        body: JSON.stringify({
+                            username: 'boden',
+                            password: '123456'
+                        })
+                    });
+                    const data = await response.json();
+                    console.log(data.token);
+                    return data.token;
+                } catch (error) {
+                    console.error('Error logging in:', error);
+                }
+            }
+            const token = loginToken();
             async function deletePost(contentId) {
                 try {
-                    const token = localStorage.getItem('token');
                     const response = await fetch(`/deletePost/${contentId}`, {
                         method: 'DELETE',
                         headers: {
-                            Authorization: `Bearer ${token}`
+                            authorization: "Bearer " + token
                         }
                     })
 

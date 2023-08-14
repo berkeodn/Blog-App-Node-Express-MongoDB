@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/getPosts', getPosts)
 router.post('/createPost', isAuthenticated, createPost)
 router.get('/getDetail/:id', getDetail)
-router.delete('/deletePost/:id',isAuthenticated, deletePost)
+router.delete('/deletePost/:id',deletePost)
 router.get('/searchPost', searchPost)
 router.post('/createHashtags', createHashtags)
 router.post('/createContents', createContents)
